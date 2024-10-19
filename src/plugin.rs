@@ -10,7 +10,7 @@ pub struct SimplePlugin {}
 
 impl GeyserPlugin for SimplePlugin {
     fn name(&self) -> &'static str {
-        "simple-geyser"
+        "dummy-geyser"
     }
 
     fn on_load(&mut self, _config_file: &str, _is_reload: bool) -> PluginResult<()> {
@@ -25,17 +25,6 @@ impl GeyserPlugin for SimplePlugin {
         slot: u64,
         _is_startup: bool,
     ) -> PluginResult<()> {
-        let pubkey_bytes = match account {
-            ReplicaAccountInfoVersions::V0_0_1(account_info) => account_info.pubkey,
-            ReplicaAccountInfoVersions::V0_0_2(account_info) => account_info.pubkey,
-            ReplicaAccountInfoVersions::V0_0_3(account_info) => account_info.pubkey,
-        };
-
-        println!(
-            "account {:?} updated at slot {}!",
-            Pubkey::try_from(pubkey_bytes).unwrap(),
-            slot
-        );
 
         Ok(())
     }
@@ -45,7 +34,7 @@ impl GeyserPlugin for SimplePlugin {
     }
 
     fn account_data_notifications_enabled(&self) -> bool {
-        true // process account changes
+        false // process account changes
     }
 
     fn transaction_notifications_enabled(&self) -> bool {
