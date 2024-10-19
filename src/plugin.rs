@@ -2,7 +2,6 @@ use {
     agave_geyser_plugin_interface::geyser_plugin_interface::{
         GeyserPlugin, ReplicaAccountInfoVersions, Result as PluginResult,
     },
-    solana_program::pubkey::Pubkey,
 };
 
 #[derive(Debug, Default)]
